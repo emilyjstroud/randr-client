@@ -1,4 +1,5 @@
 import { clientCredentials } from '../utils/client';
+import { getRiversWithLocation } from './locationData';
 
 // GET RIVERS
 const getRivers = () => new Promise((resolve, reject) => {
@@ -52,10 +53,42 @@ const getSingleRiver = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// GET RIVERS WITH RAPIDS
+const getRiversWithRapid = (rapidId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rivers?rapidId${rapidId}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+// VIEW RIVER DETAILS
+const viewRiverDetails = (riverId) => new Promise((resolve, reject) => {
+  getSingleRiver(riverId)
+    .then((riverData) => {
+      getRiversWithLocation(riverId);
+      getRiversWithRapid(riverId)
+        .then((rapidData) => {
+          resolve({ riverData, rapidData });
+        });
+    }).catch((error) => reject(error));
+});
+
+// DELETE RIVER RAPIDS
+const deleteRiverRapids = (rapidId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rivers/${rapidId}`, {
+    method: 'DELETE',
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getRivers,
   createRiver,
   updateRiver,
   deleteRiver,
   getSingleRiver,
+  getRiversWithRapid,
+  deleteRiverRapids,
+  viewRiverDetails,
 };

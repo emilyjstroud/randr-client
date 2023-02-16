@@ -64,11 +64,40 @@ const getSingleLocation = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getocationRivers = (id) => new Promise((resolve, reject) => {
+// GET LOCATION RIVERS
+const getLocationRivers = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/rivers?location=${id}`)
     .then((response) => response.json())
     .then(resolve)
     .catch((error) => reject(error));
+});
+
+// VIEW LOCATION DETAILS
+const viewLocationDetails = (locationId) => new Promise((resolve, reject) => {
+  getSingleLocation(locationId)
+    .then((locationData) => {
+      getLocationRivers(locationId)
+        .then((riverData) => {
+          resolve({ locationData, riverData });
+        });
+    }).catch((error) => reject(error));
+});
+
+// GET RIVERS WITH LOCATION
+const getRiversWithLocation = (locationId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rivers?locationId=${locationId}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+// DELETE LOCATION RIVERS
+const deleteLocationRivers = (locationId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/rivers/${locationId}`, {
+    method: 'DELETE',
+  })
+    .then(resolve)
+    .catch(reject);
 });
 
 export {
@@ -77,5 +106,8 @@ export {
   deleteLocation,
   updateLocation,
   getSingleLocation,
-  getocationRivers,
+  getLocationRivers,
+  getRiversWithLocation,
+  deleteLocationRivers,
+  viewLocationDetails,
 };
