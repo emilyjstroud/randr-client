@@ -13,20 +13,26 @@ const checkUser = (uid) => new Promise((resolve, reject) => {
       Accept: 'application/json',
     },
   })
-    .then((response) => resolve(response.json(), (response)))
+    .then((resp) => resolve(resp.json()))
     .catch(reject);
 });
 
-const registerUser = (userInfo) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseeURL}/register`, {
+const registerUser = (userInfo, user) => new Promise((resolve, reject) => {
+  const userObj = {
+    uid: user.uid,
+    first_name: userInfo.first_name,
+    last_name: userInfo.last_name,
+    email: userInfo.email,
+  };
+  fetch(`${clientCredentials.databaseURL}/register`, {
     method: 'POST',
-    body: JSON.stringify(userInfo),
+    body: JSON.stringify(userObj),
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
   })
-    .then((response) => resolve(response.json))
+    .then((resp) => resolve(resp.json()))
     .catch(reject);
 });
 
