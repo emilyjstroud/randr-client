@@ -54,10 +54,25 @@ const getRiverRapids = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const updateRapid = (rapid, id) => new Promise((resolve, reject) => {
+  const rapidObj = {
+    id: rapid.id,
+    level: rapid.level,
+  };
+  fetch(`${clientCredentials.databaseURL}/rapids/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(rapidObj),
+  })
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getRapids,
   createRapid,
   deleteRapid,
   getSingleRapid,
   getRiverRapids,
+  updateRapid,
 };

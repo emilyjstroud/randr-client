@@ -27,7 +27,7 @@ function Home() {
       <Link href="/river" passHref>
         <Button variant="danger" className="m-2">Float the Rivers</Button>
       </Link>
-      <Link href="/locations" passHref>
+      <Link href="/location" passHref>
         <Button variant="danger" className="m-2">Tour the Locations</Button>
       </Link>
       <Button variant="danger" className="m-2" onClick={signOut}>Sign Out</Button>
