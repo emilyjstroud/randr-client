@@ -36,8 +36,8 @@ export default function ViewLocation() {
         <p>Location: {locationData.name}</p>
         <p>Info: {locationData.blurb}</p>
         <hr />
-        <Link href="/shop" passHref>
-          <Button variant="danger" className="m-2">Back to Shops</Button>
+        <Link href="/location" passHref>
+          <Button variant="danger" className="m-2">Back to Locations</Button>
         </Link>
       </div>
       { riverData.map((river) => (

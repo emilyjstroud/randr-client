@@ -31,7 +31,15 @@ export default function RapidCard({ id, level, onUpdate }) {
 }
 
 RapidCard.propTypes = {
-  level: PropTypes.string.isRequired,
+  level: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
+
+// RapidCard.propTypes = {
+//   rapidObj: PropTypes.shape({
+//     level: PropTypes.string,
+//     id: PropTypes.number,
+//   }).isRequired,
+//   onUpdate: PropTypes.func.isRequired,
+// };

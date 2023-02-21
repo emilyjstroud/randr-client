@@ -19,6 +19,7 @@ function LocationForm({ user, locationObj }) {
 
   useEffect(() => {
     if (locationObj.id) setLocationFormInput(locationObj);
+    console.warn(locationObj);
   }, [locationObj, user]);
 
   const handleChange = (e) => {

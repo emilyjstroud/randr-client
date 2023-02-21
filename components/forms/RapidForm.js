@@ -54,7 +54,7 @@ const RapidForm = ({ rapidObj }) => {
 RapidForm.propTypes = {
   rapidObj: PropTypes.shape({
     id: PropTypes.number,
-    level: PropTypes.string,
+    level: PropTypes.number,
   }),
 };
 

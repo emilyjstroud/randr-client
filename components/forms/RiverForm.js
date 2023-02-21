@@ -9,7 +9,6 @@ import AsyncSelect from 'react-select';
 import { getLocations } from '../../api/locationData';
 import { getRapids, getRiverRapids } from '../../api/rapidData';
 import { createRiver, updateRiver } from '../../api/riverData';
-// import reactSelect from 'react-select';
 
 const initialState = {
   name: '',
@@ -87,8 +86,8 @@ function RiverForm({ riverObj }) {
     <Form onSubmit={handleSubmit}>
       <title>Rivers and Roads</title>
       <h2 className="text-black mt-5">{riverObj.id ? 'Update' : 'Create'} River</h2>
-      <FloatingLabel controlId="floatingInput1" label="Artist Name" className="mb-3">
-        <Form.Control type="text" placeholder="Artist's Name" name="name" value={riverFormInput.name} onChange={handleChange} required />
+      <FloatingLabel controlId="floatingInput1" label="River Name" className="mb-3">
+        <Form.Control type="text" placeholder="River's Name" name="name" value={riverFormInput.name} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="River Info" className="mb-3">
         <Form.Control type="text" placeholder="River Info" name="blurb" value={riverFormInput.blurb} onChange={handleChange} required />
@@ -96,13 +95,13 @@ function RiverForm({ riverObj }) {
       <FloatingLabel controlId="floatingInput2" label="River Photo" className="mb-3">
         <Form.Control type="url" placeholder="Enter an image url" name="photo" value={riverFormInput.photo} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingSelect" label="Shop">
+      <FloatingLabel controlId="floatingSelect" label="Location">
         <Form.Select
           aria-label="Location"
           name="locationId"
           onChange={handleChange}
           className="mb-3"
-          value={riverFormInput.shopId}
+          value={riverFormInput.locationId}
           required
         >
           <option value="">Select a Location</option>
@@ -119,14 +118,14 @@ function RiverForm({ riverObj }) {
         </Form.Select>
       </FloatingLabel>
       <div>
-        <Form.Label>Styles</Form.Label>
+        <Form.Label>Rapids</Form.Label>
         <AsyncSelect
           classNamePrefix="select"
           backspaceRemovesValue
           isClearable
           isMulti
           onChange={handleRapidSelect}
-          value={riverFormInput.styles}
+          value={riverFormInput.rapids}
           loadOptions={rapidOptions}
           defaultOptions
         />

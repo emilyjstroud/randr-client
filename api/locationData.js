@@ -11,7 +11,7 @@ const getLocations = () => new Promise((resolve, reject) => {
 // CREATE LOCATIONS
 const createLocation = (location) => new Promise((resolve, reject) => {
   const locationObj = {
-    uid: location.uid,
+    user: location.user,
     name: location.name,
     blurb: location.blurb,
     photo: location.photo,
@@ -40,14 +40,14 @@ const deleteLocation = (id) => new Promise((resolve, reject) => {
 // UPDATE LOCATION
 const updateLocation = (location, id) => new Promise((resolve, reject) => {
   const locationObj = {
-    uid: location.uid,
+    user: location.user,
     name: location.name,
-    burb: location.blurb,
+    blurb: location.blurb,
     photo: location.photo,
   };
   fetch(`${clientCredentials.databaseURL}/locations/${id}`, {
     method: 'PUT',
-    headers: { 'Conetent-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(locationObj),
   })
     .then((response) => resolve(response))

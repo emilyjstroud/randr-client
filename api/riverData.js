@@ -45,7 +45,7 @@ const deleteRiver = (id) => new Promise((resolve, reject) => {
 
 // GET SINGLE RIVER
 const getSingleRiver = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/locations/${id}`)
+  fetch(`${clientCredentials.databaseURL}/rivers/${id}`)
     .then((response) => response.json())
     .then((data) => {
       resolve(data);

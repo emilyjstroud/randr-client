@@ -16,9 +16,7 @@ const createRapid = (rapid) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/rapids`, {
     method: 'POST',
     body: JSON.stringify(rapidObj),
-    headers: {
-      'content-type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then((response) => resolve(response.json()))
     .catch((error) => reject(error));
@@ -26,9 +24,9 @@ const createRapid = (rapid) => new Promise((resolve, reject) => {
 
 // DELETE RAPID
 const deleteRapid = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/locations/${id}`, {
+  fetch(`${clientCredentials.databaseURL}/rapids/${id}`, {
     method: 'DELETE',
-    headers: { ' ontent-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then((response) => resolve(response))
     .catch((error) => reject(error));
@@ -36,7 +34,7 @@ const deleteRapid = (id) => new Promise((resolve, reject) => {
 
 // GET SINGLE RAPID
 const getSingleRapid = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databseURL}/rapids/${id}`)
+  fetch(`${clientCredentials.databaseURL}/rapids/${id}`)
     .then((response) => response.json())
     .then((data) => {
       resolve({

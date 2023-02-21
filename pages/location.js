@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { useAuth } from '../utils/context/authContext';
+import LocationCard from '../components/LocationCard';
 import { getLocations } from '../api/locationData';
 
 function LocationPage() {
   const [locations, setLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
 
   const { user } = useAuth();
 
   const getAllLocations = () => {
     getLocations(user.uid).then((locationsArray) => {
       setLocations(locationsArray);
+      setFilteredLocations(locationsArray);
     });
   };
 
@@ -31,11 +34,11 @@ function LocationPage() {
         <title>Rivers and Roads</title>
         <h1 style={{ color: 'white' }}>Tour the Locations</h1>
         <div className="d-flex flex-wrap flex-row">
-          {/* {
+          {
       filteredLocations.map((location) => (
         <LocationCard key={location.id} locationObj={location} onUpdate={getAllLocations} />
       ))
-      } */}
+      }
         </div>
       </div>
     </div>

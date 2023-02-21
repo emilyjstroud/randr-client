@@ -35,17 +35,17 @@ export default function ViewRiver() {
         <h5 style={{ color: 'white' }}>
           {riverData.name}
         </h5>
-        <p>Location: {riverData.location.id}</p>
+        <p>Name: {riverData.name}</p>
         {/* <p>Rapid: {rapidData.rapid.id}</p> */}
         <p>Info: {riverData.blurb}</p>
         <hr />
-        <Link href="/artist" passHref>
+        <Link href="/river" passHref>
           <Button variant="danger" className="m-2">Back to Rivers</Button>
         </Link>
         <br />
       </div>
       { rapidData.map((rapid) => (
-        <RapidCard key={rapid.id} name={rapid.raid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
+        <RapidCard key={rapid.id} name={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
       ))}
     </div>
   );
