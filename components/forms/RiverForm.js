@@ -43,7 +43,7 @@ function RiverForm({ riverObj }) {
   };
 
   useEffect(() => {
-    getLocations.then(setLocations);
+    getLocations().then(setLocations);
     if (riverObj.id) {
       getRiverRapids(riverObj.id).then((rapidsArray) => {
         const rapidsSelect = rapidsArray.map((rapid) => ({

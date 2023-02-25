@@ -12,6 +12,10 @@ export default function RapidCard({ id, level, onUpdate }) {
     }
   };
 
+  // useEffect(() => {
+  //   getRapids();
+  // }, []);
+
   return (
     <>
       <Card className="text-center">
@@ -38,7 +42,10 @@ RapidCard.propTypes = {
 
 // RapidCard.propTypes = {
 //   rapidObj: PropTypes.shape({
-//     level: PropTypes.string,
+//     level: PropTypes.number,
+//     river: PropTypes.shape({
+//       id: PropTypes.number,
+//     }),
 //     id: PropTypes.number,
 //   }).isRequired,
 //   onUpdate: PropTypes.func.isRequired,

@@ -10,12 +10,15 @@ const getRivers = () => new Promise((resolve, reject) => {
 });
 
 // CREATE RIVER
-const createRiver = (riverObj) => new Promise((resolve, reject) => {
+const createRiver = (river) => new Promise((resolve, reject) => {
+  const riverObj = {
+    level: river.level,
+  };
   fetch(`${clientCredentials.databaseURL}/rivers`, {
     method: 'POST',
     body: JSON.stringify(riverObj),
     headers: {
-      'content-type': 'application.json',
+      'Content-Type': 'application.json',
     },
   })
     .then((response) => resolve(response.json()))

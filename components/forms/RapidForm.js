@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import { createRapid, updateRapid } from '../../api/rapidData';
 
 const initialState = {
-  level: '',
+  level: null,
 };
 
 const RapidForm = ({ rapidObj }) => {
