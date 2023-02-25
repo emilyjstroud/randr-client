@@ -38,7 +38,7 @@ function Rapids() {
           <section key={`rapid--${rapid.id}`} className="rapid">
             <RapidCard
               id={rapid.id}
-              name={rapid.level}
+              level={rapid.level}
               onUpdate={getUserRapids}
             />
           </section>

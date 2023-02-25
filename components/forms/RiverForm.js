@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import AsyncSelect from 'react-select';
+import AsyncSelect from 'react-select/async';
 import { getLocations } from '../../api/locationData';
 import { getRapids, getRiverRapids } from '../../api/rapidData';
 import { createRiver, updateRiver } from '../../api/riverData';

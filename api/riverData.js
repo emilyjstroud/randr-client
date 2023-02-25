@@ -12,13 +12,17 @@ const getRivers = () => new Promise((resolve, reject) => {
 // CREATE RIVER
 const createRiver = (river) => new Promise((resolve, reject) => {
   const riverObj = {
-    level: river.level,
+    name: river.name,
+    blurb: river.blurb,
+    photo: river.photo,
+    location: river.location,
+    rapids: river.rapids,
   };
   fetch(`${clientCredentials.databaseURL}/rivers`, {
     method: 'POST',
     body: JSON.stringify(riverObj),
     headers: {
-      'Content-Type': 'application.json',
+      'Content-Type': 'application/json',
     },
   })
     .then((response) => resolve(response.json()))

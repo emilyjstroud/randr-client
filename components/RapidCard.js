@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
-import { deleteRapid } from '../api/rapidData';
+import { deleteRapid, getRapids } from '../api/rapidData';
 
-export default function RapidCard({ id, level, onUpdate }) {
+export default function RapidCard({ rapidObj, onUpdate }) {
   const deleteThisRapid = () => {
-    if (window.confirm(`Delete ${level}?`)) {
-      deleteRapid(id).then(() => onUpdate());
+    if (window.confirm(`Delete ${rapidObj.level}?`)) {
+      deleteRapid(rapidObj.id).then(() => onUpdate());
     }
   };
-
-  // useEffect(() => {
-  //   getRapids();
-  // }, []);
+  console.warn(rapidObj.level);
+  useEffect(() => {
+    getRapids();
+  }, []);
 
   return (
     <>
       <Card className="text-center">
         <Card.Body>
-          <Card.Title>{level}</Card.Title>
-          <Link href={`/rapid/edit/${id}`} passHref>
+          <Card.Title>{rapidObj.level}</Card.Title>
+          <Link href={`/rapid/edit/${rapidObj.id}`} passHref>
             <Button variant="info">Edit</Button>
           </Link>
           <Button variant="danger" onClick={deleteThisRapid} className="m-2">
@@ -34,19 +34,19 @@ export default function RapidCard({ id, level, onUpdate }) {
   );
 }
 
-RapidCard.propTypes = {
-  level: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
-  onUpdate: PropTypes.func.isRequired,
-};
-
 // RapidCard.propTypes = {
-//   rapidObj: PropTypes.shape({
-//     level: PropTypes.number,
-//     river: PropTypes.shape({
-//       id: PropTypes.number,
-//     }),
-//     id: PropTypes.number,
-//   }).isRequired,
+//   level: PropTypes.number.isRequired,
+//   id: PropTypes.number.isRequired,
 //   onUpdate: PropTypes.func.isRequired,
 // };
+
+RapidCard.propTypes = {
+  rapidObj: PropTypes.shape({
+    level: PropTypes.number,
+    river: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    id: PropTypes.number,
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
