@@ -41,7 +41,7 @@ const RapidForm = ({ rapidObj }) => {
     <>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <h2 className="text-white mt-5">{rapidObj.id ? 'Update' : 'Create'} a Rapid</h2>
+          <h2 className="text-white mt-5">{rapidObj.id ? 'Update' : 'Create'} Rapid</h2>
           <Form.Label className="text-white">Rapid Level</Form.Label>
           <Form.Control name="level" required value={currentRapid.level} onChange={handleChange} />
         </Form.Group>

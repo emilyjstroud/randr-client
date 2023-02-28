@@ -45,7 +45,7 @@ const getSingleRapid = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// GET RIVER RAOIDS
+// GET RIVER RAPIDS
 const getRiverRapids = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/river_rapids?river=${id}`)
     .then((response) => resolve(response.json()))

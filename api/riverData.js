@@ -62,7 +62,7 @@ const getSingleRiver = (id) => new Promise((resolve, reject) => {
 
 // GET RIVERS WITH RAPIDS
 const getRiversWithRapid = (rapidId) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/rivers?rapidId${rapidId}`)
+  fetch(`${clientCredentials.databaseURL}/rivers?rapidId=${rapidId}`)
     .then((response) => response.json())
     .then(resolve)
     .catch(reject);

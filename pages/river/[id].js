@@ -25,7 +25,7 @@ export default function ViewRiver() {
     getRiverDetails();
     getRiverRapids(id).then(setRapidData);
   }, [id]);
-
+  console.warn(rapidData);
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
@@ -45,7 +45,7 @@ export default function ViewRiver() {
         <br />
       </div>
       { rapidData.map((rapid) => (
-        <RapidCard key={rapid.id} name={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
+        <RapidCard key={rapid.id} level={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
       ))}
     </div>
   );
