@@ -66,6 +66,21 @@ const updateRapid = (rapid, id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// CREATE RAPID
+const createRiverRapid = (riverId, rapidId) => new Promise((resolve, reject) => {
+  const riverRapidObj = {
+    river_id: riverId,
+    rapid_id: rapidId,
+  };
+  fetch(`${clientCredentials.databaseURL}/river_rapids`, {
+    method: 'POST',
+    body: JSON.stringify(riverRapidObj),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((response) => resolve(response.json()))
+    .catch((error) => reject(error));
+});
+
 export {
   getRapids,
   createRapid,
@@ -73,4 +88,5 @@ export {
   getSingleRapid,
   getRiverRapids,
   updateRapid,
+  createRiverRapid,
 };

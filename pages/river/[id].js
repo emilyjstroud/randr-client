@@ -24,8 +24,10 @@ export default function ViewRiver() {
   useEffect(() => {
     getRiverDetails();
     getRiverRapids(id).then(setRapidData);
+    // console.warn(rapidData);
   }, [id]);
-  console.warn(rapidData);
+  // console.warn(riverData);
+  // console.warn(setRapidData);
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
@@ -43,9 +45,10 @@ export default function ViewRiver() {
           <Button variant="danger" className="m-2">Back to Rivers</Button>
         </Link>
         <br />
+        <p>Rapid: {riverData.rapids}</p>
       </div>
       { rapidData.map((rapid) => (
-        <RapidCard key={rapid.id} level={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
+        <RapidCard key={rapid.id} id={rapid.id} level={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
       ))}
     </div>
   );
