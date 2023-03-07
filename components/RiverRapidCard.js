@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 // import Link from 'next/link';
-import { deleteRapid, getRapids } from '../api/rapidData';
+import { deleteRiverRapid, getRapids } from '../api/rapidData';
 
 export default function RapidCard({ level, id, onUpdate }) {
-  const deleteThisRapid = () => {
+  const deleteThisRiverRapid = () => {
     if (window.confirm(`Delete ${level}?`)) {
-      deleteRapid(id).then(() => onUpdate());
+      deleteRiverRapid(id).then(() => onUpdate());
     }
   };
   // console.warn(rapidObj.level);
@@ -24,7 +24,7 @@ export default function RapidCard({ level, id, onUpdate }) {
           {/* <Link href={`/rapid/edit/${id}`} passHref>
             <Button variant="info">Edit</Button>
           </Link> */}
-          <Button variant="danger" onClick={deleteThisRapid} className="m-2">
+          <Button variant="danger" onClick={deleteThisRiverRapid} className="m-2">
             Delete
           </Button>
         </Card.Body>
@@ -39,14 +39,3 @@ RapidCard.propTypes = {
   id: PropTypes.number.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
-
-// RapidCard.propTypes = {
-//   rapidObj: PropTypes.shape({
-//     level: PropTypes.number,
-//     river: PropTypes.shape({
-//       id: PropTypes.number,
-//     }),
-//     id: PropTypes.number,
-//   }).isRequired,
-//   onUpdate: PropTypes.func.isRequired,
-// };

@@ -81,6 +81,15 @@ const createRiverRapid = (riverId, rapidId) => new Promise((resolve, reject) => 
     .catch((error) => reject(error));
 });
 
+const deleteRiverRapid = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/river_rapids/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getRapids,
   createRapid,
@@ -89,4 +98,5 @@ export {
   getRiverRapids,
   updateRapid,
   createRiverRapid,
+  deleteRiverRapid,
 };

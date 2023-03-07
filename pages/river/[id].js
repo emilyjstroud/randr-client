@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { viewRiverDetails } from '../../api/riverData';
 import { getRiverRapids } from '../../api/rapidData';
-import RapidCard from '../../components/RapidCard';
+import RiverRapidCard from '../../components/RiverRapidCard';
 
 export default function ViewRiver() {
   const [riverData, setRiverData] = useState({});
@@ -19,15 +19,12 @@ export default function ViewRiver() {
     viewRiverDetails(id).then((data) => {
       setRiverData(data?.riverData || {});
     });
+    getRiverRapids(id).then(setRapidData);
   };
 
   useEffect(() => {
     getRiverDetails();
-    getRiverRapids(id).then(setRapidData);
-    // console.warn(rapidData);
   }, [id]);
-  // console.warn(riverData);
-  // console.warn(setRapidData);
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
@@ -37,18 +34,17 @@ export default function ViewRiver() {
         <h5 style={{ color: 'white' }}>
           {riverData.name}
         </h5>
-        <p>Name: {riverData.name}</p>
+        {/* <p>Name: {riverData.name}</p> */}
         {/* <p>Rapid: {rapidData.rapid.id}</p> */}
-        <p>Info: {riverData.blurb}</p>
+        <p><b>Info:</b> {riverData.blurb}</p>
         <hr />
         <Link href="/river" passHref>
           <Button variant="danger" className="m-2">Back to Rivers</Button>
         </Link>
         <br />
-        <p>Rapid: {riverData.rapids}</p>
       </div>
       { rapidData.map((rapid) => (
-        <RapidCard key={rapid.id} id={rapid.id} level={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
+        <RiverRapidCard key={rapid.id} id={rapid.id} level={rapid.rapid.level} rapidObj={rapid} onUpdate={getRiverDetails} />
       ))}
     </div>
   );

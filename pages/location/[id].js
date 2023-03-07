@@ -31,10 +31,10 @@ export default function ViewLocation() {
       </div>
       <div className="text-white ms-5 details">
         <h5 style={{ color: 'white' }}>
-          {locationData.locationName}
+          {locationData.name}
         </h5>
-        <p>Location: {locationData.name}</p>
-        <p>Info: {locationData.blurb}</p>
+        {/* <p>Location: {locationData.name}</p> */}
+        <p><b>Info:</b> {locationData.blurb}</p>
         <hr />
         <Link href="/location" passHref>
           <Button variant="danger" className="m-2">Back to Locations</Button>
