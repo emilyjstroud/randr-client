@@ -19,7 +19,7 @@ function Home() {
       }}
     >
       <title>Rivers and Roads</title>
-      <h1 style={{ color: 'white' }}>Hey there, {user.displayName}! </h1>
+      <h1 style={{ color: 'white' }}>{user.displayName} </h1>
       <br />
       <img src="https://images.squarespace-cdn.com/content/v1/543e7367e4b0f38ea790072b/1441389387982-Z63QEJ1A9CTYL2D814PQ/third.jpg" alt="" />
       <br />

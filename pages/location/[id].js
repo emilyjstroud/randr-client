@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { getRiversWithLocation, viewLocationDetails } from '../../api/locationData';
+import { viewLocationDetails } from '../../api/locationData';
 import RiverCard from '../../components/RiverCard';
 
 export default function ViewLocation() {
@@ -41,7 +41,7 @@ export default function ViewLocation() {
         </Link>
       </div>
       { riverData.map((river) => (
-        <RiverCard key={river.id} riverObj={river} onUpdate={getRiversWithLocation} />
+        <RiverCard key={river.id} riverObj={river} onUpdate={getLocationDetails} />
       ))}
     </div>
   );
